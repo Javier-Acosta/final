@@ -1,5 +1,6 @@
 import React from 'react'
 import PatientDetaillItem from './PatientDetaillItem'
+import {toast} from 'react-toastify'
 import { Patient } from '../types'
 import { usePatientStore } from "../store"
 
@@ -10,6 +11,12 @@ const PatientDetails = ({patient} : PatientDetailProps )=> {
 
     const deletePatient = usePatientStore((state) => state.deletePatient)
     const getPatientById = usePatientStore((state) => state.getPatientById)
+    const handleClick=()=>{
+        deletePatient(patient.id)
+        toast('Paciente Eliminado',{
+            type:'error'
+        })
+    }
     
     return (
     <div className="mx-5 my-10 px-5 py-10 bg-white shadow-md rounded-xl">
@@ -32,7 +39,7 @@ const PatientDetails = ({patient} : PatientDetailProps )=> {
         <button
             type="button"
             className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg"
-           onClick={()=>deletePatient(patient.id)}
+           onClick={handleClick}
         >Eliminar</button>
     </div>
 </div>
