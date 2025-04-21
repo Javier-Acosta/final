@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import PatientForm from './components/PatientForm'
 import PatientsList from './components/PatientsList'
 
